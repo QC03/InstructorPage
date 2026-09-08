@@ -12,21 +12,21 @@ const links = [
 
 export function AppShell({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [desktopMenuOpen, setDesktopMenuOpen] = useState(false)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const menuRef = useRef<HTMLElement>(null)
   const location = useLocation()
 
   useEffect(() => setMenuOpen(false), [location.pathname])
 
-  useEffect(() => setDesktopMenuOpen(false), [location.pathname])
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' })
+  }, [location.pathname])
 
   useEffect(() => {
-    if (!menuOpen && !desktopMenuOpen) return
+    if (!menuOpen) return
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setMenuOpen(false)
-        setDesktopMenuOpen(false)
         if (menuOpen) triggerRef.current?.focus()
       }
       if (menuOpen && event.key === 'Tab' && menuRef.current) {
@@ -45,17 +45,17 @@ export function AppShell({ children }: { children: ReactNode }) {
     }
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [menuOpen, desktopMenuOpen])
+  }, [menuOpen])
 
   return (
     <div className="site-shell">
       <header className={`site-header ${location.pathname === '/' ? 'header-light' : 'header-dark'}`}>
-        <div className="desktop-menu-wrap" onMouseEnter={() => setDesktopMenuOpen(true)} onMouseLeave={() => setDesktopMenuOpen(false)} onFocus={() => setDesktopMenuOpen(true)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setDesktopMenuOpen(false) }}>
-          <Link className="brand" to="/" aria-label={`${siteContent.brand} 홈`} aria-haspopup="menu" aria-expanded={desktopMenuOpen}>
+        <div className="desktop-menu-wrap">
+          <Link className="brand" to="/" aria-label={`${siteContent.brand} 홈`}>
             <span className="brand-mark">S</span>
             <span>{siteContent.brand}</span>
           </Link>
-          <aside className={`desktop-menu ${desktopMenuOpen ? 'is-open' : ''}`} aria-label="주 메뉴" aria-hidden={!desktopMenuOpen}>
+          <aside className="desktop-menu" aria-label="주 메뉴">
             {links.map((link) => <NavItem key={link.to} {...link} />)}
             {siteContent.kakaoUrl ? <a className="side-contact" href={siteContent.kakaoUrl} target="_blank" rel="noreferrer">카카오톡으로 문의 <ArrowUpRight size={16} /></a> : <span className="side-contact is-disabled">카카오톡 링크 준비 중</span>}
           </aside>
