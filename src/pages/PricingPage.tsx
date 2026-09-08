@@ -1,0 +1,8 @@
+import { ArrowUpRight, Check } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { SectionIntro } from '../components/SectionIntro'
+import { siteContent } from '../content/site'
+
+export function PricingPage() {
+  return <div className="page-width interior-page"><section className="page-heading compact-heading"><p className="eyebrow">06 / 수업 안내</p><h1>당신에게 맞는<br /><em>한 번의 활강.</em></h1><p className="lede">현재 실력과 목표를 먼저 듣고 가장 좋은 코스를 제안합니다.</p></section><section className="price-layout"><div className="price-table">{siteContent.prices.length ? siteContent.prices.map((item) => <article className="price-row" key={item.title}><span className="price-category">{item.category}</span><div><h3>{item.title}</h3><p>{item.detail}</p></div><strong>{item.price}</strong><Link to="/contact" aria-label={`${item.title} 문의`}><ArrowUpRight size={19} /></Link></article>) : <p className="empty-state">가격 정보 입력 예정입니다. 강습 조건과 일정은 연락 페이지에서 안내할 수 있도록 준비 중입니다.</p>}</div><aside className="included"><p className="eyebrow">모든 수업에 포함</p>{['수업 전 15분 컨디션 체크', '개인별 동작 피드백', '수업 후 연습 루틴 정리', '리프트권 · 장비 별도'].map((item) => <p key={item}><Check size={16} />{item}</p>)}</aside></section><section className="price-note"><SectionIntro eyebrow="단체 및 맞춤 수업" title="인원과 시간을<br />맞춰서도 가능합니다." copy="가족, 커플, 동호회 수업은 인원과 목표에 따라 별도 안내합니다. 원하는 날짜와 종목을 알려주세요." /><Link className="button button-dark" to="/contact">가격 문의하기 <ArrowUpRight size={17} /></Link></section></div>
+}

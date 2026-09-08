@@ -1,1 +1,4 @@
 source/
+node_modules/
+dist/
+public/images/
