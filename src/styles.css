@@ -91,7 +91,14 @@ em { color: var(--signal); font-style: normal; }
 .desktop-menu .nav-link[aria-current='page'] { border-bottom: 2px solid currentColor; }
 .desktop-menu .side-contact { margin: 0 0 0 8px; }
 .button, .kakao-button, .price-table-link { border: 1px solid rgba(16,38,61,.18); box-shadow: 0 8px 18px rgba(16,38,61,.12); }
-.button:hover, .kakao-button:hover, .price-table-link:hover { box-shadow: 0 12px 24px rgba(16,38,61,.18); }
+.button, .kakao-button, .price-table-link { min-height: 52px; border-radius: 8px; font-weight: 700; transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.button-signal { border-color: #c93b2a; background: #f05a43; box-shadow: 0 8px 18px rgba(201,59,42,.25); }
+.button-dark, .price-table-link { border-color: #081a2d; background: #173653; box-shadow: 0 8px 18px rgba(16,38,61,.24); }
+.kakao-button { border-color: #d19d00; background: #f7d34d; color: #241d00; box-shadow: 0 8px 18px rgba(191,143,0,.2); }
+.button:hover, .kakao-button:hover, .price-table-link:hover { transform: translateY(-3px); box-shadow: 0 13px 26px rgba(16,38,61,.24); }
+.button-signal:hover { background: #d94330; }
+.button-dark:hover, .price-table-link:hover { background: #0e2942; }
+.kakao-button:hover { background: #ffe17a; }
 .button:focus-visible, .kakao-button:focus-visible, .price-table-link:focus-visible, .menu-trigger:focus-visible, .review-thumbnail:focus-visible, .image-modal-close:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
 .price-table-wrap { border-top: 1px solid var(--line); }
 .price-table-note { margin: 0; padding: 18px 0 12px; color: var(--muted); font-size: 14px; }

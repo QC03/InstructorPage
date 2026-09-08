@@ -29,4 +29,10 @@ export const siteContent = {
   prices: [] as PriceItem[],
 } as const
 
-export const careerItems: readonly (readonly [string, string, string])[] = []
+export const careerItems: readonly (readonly [string, string, string])[] = [
+  ['21-22', '활동시작', '용평 스키여행 샵에서 매니저로 활동'],
+  ['23년 01월', '스키 지도자 자격 취득', 'KSIA 스키 레벨 1 자격 취득'],
+  ['23년 02월', '스노보드 지도자 자격 취득', 'KSIA 스노보드 레벨 1 자격 취득'],
+  ['22-23', '스키 · 스노보드 강사', '샵에서 강사 및 매니저로 활동'],
+  ['25-26', '스키 · 스노보드 강사', '샵에서 강사 및 매니저로 활동'],
+]
