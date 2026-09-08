@@ -79,7 +79,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           </Link>
           <aside className="desktop-menu" aria-label="주 메뉴">
             {links.map((link) => <NavItem key={link.to} {...link} />)}
-            {siteContent.kakaoUrl ? <a className="side-contact" href={siteContent.kakaoUrl} target="_blank" rel="noreferrer">카카오톡으로 문의 <ArrowUpRight size={16} /></a> : <span className="side-contact is-disabled">카카오톡 링크 준비 중</span>}
+            {siteContent.kakaoUrl ? <a className="nav-link side-contact" href={siteContent.kakaoUrl} target="_blank" rel="noreferrer">카카오톡으로 문의 <ArrowUpRight size={16} /></a> : <span className="nav-link side-contact is-disabled">카카오톡 링크 준비 중</span>}
           </aside>
         </div>
         <button ref={triggerRef} className="menu-trigger" type="button" aria-expanded={menuOpen} aria-controls="mobile-menu" onClick={() => setMenuOpen((open) => !open)}>
@@ -91,7 +91,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <aside ref={menuRef} id="mobile-menu" className={`mobile-menu ${menuOpen ? 'is-open' : ''}`} aria-hidden={!menuOpen}>
         <p className="eyebrow">산이 기다리고 있습니다</p>
         {links.map((link) => <NavItem key={link.to} {...link} mobile />)}
-        {siteContent.kakaoUrl ? <a className="side-contact" href={siteContent.kakaoUrl} target="_blank" rel="noreferrer">카카오톡으로 문의 <ArrowUpRight size={16} /></a> : <span className="side-contact is-disabled">카카오톡 링크 준비 중</span>}
+        {siteContent.kakaoUrl ? <a className="nav-link mobile-nav-link side-contact" href={siteContent.kakaoUrl} target="_blank" rel="noreferrer">카카오톡으로 문의 <ArrowUpRight size={16} /></a> : <span className="nav-link mobile-nav-link side-contact is-disabled">카카오톡 링크 준비 중</span>}
       </aside>
       <main>{children}</main>
       <footer className="site-footer">

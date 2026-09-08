@@ -11,7 +11,7 @@ export const siteContent = {
   role: '스키 · 스노보드 강사',
   location: '하이원, 모나용평, 알펜시아 스키장',
   season: '26-27 시즌',
-  kakaoUrl: '',
+  kakaoUrl: 'http://pf.kakao.com/_nPxgJX/chat',
   email: 'qc0306@naver.com',
   heroImage: '/images/lesson-hero.jpg',
   lessonImages: [
