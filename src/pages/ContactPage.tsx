@@ -57,7 +57,7 @@ function ContactChecklist() {
     <section className="send-guide">
       <div>
         <p className="eyebrow">문의할 때 알려주세요</p>
-        <p className="send-guide-copy">세 가지만 남겨주시면 가능한 일정과 맞춤 레슨을 빠르게 안내해 드립니다.</p>
+        <p className="send-guide-copy">세 가지만 남겨주시면 가능한 일정과 맞춤 강습을 빠르게 안내해 드립니다.</p>
       </div>
       <ol>
         {contactChecklist.map((item, index) => (
