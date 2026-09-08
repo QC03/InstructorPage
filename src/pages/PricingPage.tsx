@@ -7,6 +7,7 @@ const includedItems = [
   '개인별 동작 피드백',
   '수업 후 연습 루틴 정리',
   '리프트권 · 장비 별도',
+  '희망 시 촬영 및 영상 피드백',
 ]
 
 const lessonPrices = [
@@ -61,15 +62,15 @@ export function PricingPage() {
         <IncludedItems />
       </section>
 
-      <section className="price-note">
+      <section className="price-note" id="intermediate-lesson">
         <SectionIntro
-          eyebrow="단체 및 맞춤 수업"
+          eyebrow="중급자 맞춤 수업"
           title={
             <>
-              인원과 시간을 <br /> 맞춰서도 가능합니다.
+              중급자에게 <br /> 맞춰서도 가능합니다.
             </>
           }
-          copy="가족, 커플 수업은 인원과 목표에 따라 별도 안내합니다. 원하는 날짜와 종목을 알려주세요."
+          copy="중급자 수업은 추가 금액이 발생하며, 자세한 내용은 문의해주세요."
         />
         <Link className="button button-dark" to="/contact">
           가격 문의하기

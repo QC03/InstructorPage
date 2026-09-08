@@ -1,6 +1,5 @@
-import { ArrowDownRight, ArrowUpRight, Mountain, MoveRight } from 'lucide-react'
+import { ArrowDownRight, ArrowUpRight, MoveRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { Gallery } from '../components/Gallery'
 import { SectionIntro } from '../components/SectionIntro'
 import { siteContent } from '../content/site'
 
@@ -18,11 +17,28 @@ export function HomePage() {
     </section>
     <section className="intro-band page-width">
       <SectionIntro eyebrow="01 / 수업 방식" title={<>실력보다 먼저, <br /><span>움직임의 이유를</span> <br />찾습니다.</>} copy="눈 위에서 편안해지는 순간은 각자 다릅니다. 지금의 몸을 정확히 관찰하고, 다음 한 걸음을 함께 설계합니다." />
-      <div className="discipline-links"><Link to="/career"><span>01</span><strong>SKI</strong><small>정확한 엣지와 리듬</small><MoveRight /></Link><Link to="/career"><span>02</span><strong>SNOWBOARD</strong><small>자유로운 턴과 밸런스</small><MoveRight /></Link></div>
+      <div className="discipline-links"><Link to="/career"><span></span><strong>강사 소개</strong><small>강사 소개 페이지로 이동합니다</small><MoveRight /></Link></div>
     </section>
-    <section className="dark-band">
-      <div className="page-width split-heading"><SectionIntro eyebrow="02 / 설원에서" title={<>수업은 사진보다 <br />더 많은 것을 남깁니다.</>} /><Link className="text-link light-link" to="/career">강습 기록 보기 <ArrowUpRight size={16} /></Link></div>
-      <Gallery items={siteContent.lessonImages} className="page-width" />
+    <section className="intro-band page-width lesson-intro">
+      <SectionIntro
+        eyebrow="02 / 수업 안내"
+        title={<>당신에게 맞는<br /> <span>수업의 시작점</span>을<br /> 찾습니다.</>}
+        copy="입문부터 라이딩까지, 현재의 움직임과 목표에 맞춰 필요한 수업을 안내합니다."
+      />
+      <div className="discipline-links">
+        <Link to="/pricing">
+          <span>01</span>
+          <strong>수업 안내</strong>
+          <small>시간과 인원별 수업 구성 확인하기</small>
+          <MoveRight />
+        </Link>
+        <Link to="/pricing#intermediate-lesson">
+          <span>02</span>
+          <strong>중급자 맞춤 수업</strong>
+          <small>라이딩 중심의 맞춤 수업 알아보기</small>
+          <MoveRight />
+        </Link>
+      </div>
     </section>
     <section className="cta-band page-width"><div><p className="eyebrow">준비되셨다면</p><h2>이번 겨울, </h2> <h2><em>눈 위에서 만나요.</em></h2></div><Link className="button button-signal" to="/contact">레슨 문의하기 <ArrowUpRight size={17} /></Link></section>
   </>

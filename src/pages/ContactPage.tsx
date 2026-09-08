@@ -4,8 +4,8 @@ import { siteContent } from '../content/site'
 
 const contactChecklist = [
   '희망 날짜와 스키장',
-  '스키 / 스노보드와 현재 레벨',
-  '인원과 원하는 시간',
+  '스키 / 스노보드와 현재 수준',
+  '원하는 시간과 인원수, 나이',
 ]
 
 function ContactActions() {
@@ -37,14 +37,14 @@ function OperatingInfo() {
       <div>
         <MapPin size={18} aria-hidden="true" />
         <span>
-          운영 슬로프
+          활동 스키장
           <strong>{siteContent.location}</strong>
         </span>
       </div>
       <div>
         <CalendarDays size={18} aria-hidden="true" />
         <span>
-          운영 시즌
+          활동 시즌
           <strong>{siteContent.season}</strong>
         </span>
       </div>

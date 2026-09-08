@@ -12,6 +12,7 @@ const links = [
 
 export function AppShell({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const menuRef = useRef<HTMLElement>(null)
   const location = useLocation()
@@ -19,8 +20,30 @@ export function AppShell({ children }: { children: ReactNode }) {
   useEffect(() => setMenuOpen(false), [location.pathname])
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'auto' })
-  }, [location.pathname])
+    const targetId = decodeURIComponent(location.hash.replace(/^#/, ''))
+
+    if (!targetId) {
+      window.scrollTo({ top: 0, behavior: 'auto' })
+      return
+    }
+
+    const timer = window.setTimeout(() => {
+      document.getElementById(targetId)?.scrollIntoView({
+        behavior: 'auto',
+        block: 'start',
+      })
+    }, 50)
+
+    return () => window.clearTimeout(timer)
+  }, [location.pathname, location.hash])
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 24)
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     if (!menuOpen) return
@@ -49,7 +72,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="site-shell">
-      <header className={`site-header ${location.pathname === '/' ? 'header-light' : 'header-dark'}`}>
+      <header className={`site-header ${location.pathname === '/' && !isScrolled ? 'header-light' : 'header-dark'} ${isScrolled ? 'is-scrolled' : ''}`}>
         <div className="desktop-menu-wrap">
           <Link className="brand" to="/" aria-label={`${siteContent.brand} 홈`}>
             <span className="brand-mark">S</span>

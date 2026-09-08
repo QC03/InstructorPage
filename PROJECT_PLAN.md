@@ -108,4 +108,11 @@
 - [x] 프로젝트 초기화 및 구현
 - [x] 빌드·코드 진단 검증
 - [ ] 브라우저 기반 반응형·라우팅 검증
-- [ ] Vercel 배포 준비
+- [x] Vercel 배포 준비 및 production 배포
+
+## 11. 배포 기록
+
+- Production: https://instructor-page-red.vercel.app
+- Inspect: https://vercel.com/qc03s-projects/instructor-page/2Gkj1sUBrqbvwQEP9v6CefuuwuGr
+- 배포 빌드, 주요 라우트, 대표 이미지 응답 확인 완료
+- `public/` 이미지 파일은 현재 Git 미추적 상태이므로 GitHub 자동 배포를 사용할 경우 이미지 파일을 커밋해야 한다.
