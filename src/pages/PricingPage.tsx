@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { SectionIntro } from '../components/SectionIntro'
 
 const includedItems = [
-  '수업 전 15분 컨디션 체크',
+  '수업 전 컨디션 체크',
   '개인별 동작 피드백',
   '수업 후 연습 루틴 정리',
   '리프트권 · 장비 별도',
@@ -31,7 +31,7 @@ function PriceTable() {
 function IncludedItems() {
   return (
     <aside className="included">
-      <p className="eyebrow">모든 수업에 포함</p>
+      <p className="eyebrow">모든 수업에 포함되는 내용</p>
       {includedItems.map((item) => (
         <p key={item}>
           <Check size={16} />
@@ -66,7 +66,7 @@ export function PricingPage() {
           eyebrow="단체 및 맞춤 수업"
           title={
             <>
-              인원과 시간을 맞춰서도 가능합니다.
+              인원과 시간을 <br /> 맞춰서도 가능합니다.
             </>
           }
           copy="가족, 커플 수업은 인원과 목표에 따라 별도 안내합니다. 원하는 날짜와 종목을 알려주세요."

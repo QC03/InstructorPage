@@ -3,9 +3,9 @@ import { ReviewStrip } from '../components/Gallery'
 import { siteContent } from '../content/site'
 
 const contactChecklist = [
-  '희망 날짜와 리조트',
+  '희망 날짜와 스키장',
   '스키 / 스노보드와 현재 레벨',
-  '함께 하는 인원과 원하는 시간',
+  '인원과 원하는 시간',
 ]
 
 function ContactActions() {
@@ -77,7 +77,10 @@ export function ContactPage() {
       <section className="page-heading contact-heading">
         <p className="eyebrow">07 / 문의하기</p>
         <h1>
-          눈 위의 추억을 <em>예약하세요.</em>
+          눈 위의 추억을
+        </h1>
+        <h1>
+            <em>예약하세요.</em>
         </h1>
         <p className="lede">아래 내용을 보내주시면 가능한 일정과 맞춤 레슨을 안내해 드립니다.</p>
       </section>
@@ -93,7 +96,7 @@ export function ContactPage() {
         <div className="split-heading">
           <div>
             <p className="eyebrow">08 / 수강생 후기</p>
-            <p className="review-label">수강생의 다음 주행을 직접 확인해 보세요.</p>
+            <p className="review-label">수강생의 후기를 직접 확인해 보세요.</p>
           </div>
           <p className="reviews-note">실제 수업 후 남겨주신 후기 캡처입니다.</p>
         </div>
