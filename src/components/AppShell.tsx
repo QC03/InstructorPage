@@ -5,7 +5,6 @@ import { siteContent } from '../content/site'
 
 const links = [
   { to: '/', label: '홈' },
-  { to: '/career', label: '강사 소개' },
   { to: '/pricing', label: '수업 안내' },
   { to: '/contact', label: '문의하기' },
 ]

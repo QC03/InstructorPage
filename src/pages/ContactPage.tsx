@@ -75,7 +75,7 @@ export function ContactPage() {
   return (
     <div className="page-width interior-page contact-page">
       <section className="page-heading contact-heading">
-        <p className="eyebrow">07 / 문의하기</p>
+        <p className="eyebrow">06 / 문의하기</p>
         <h1>
           눈 위의 추억을
         </h1>
@@ -95,7 +95,7 @@ export function ContactPage() {
       <section className="reviews">
         <div className="split-heading">
           <div>
-            <p className="eyebrow">08 / 수강생 후기</p>
+            <p className="eyebrow">07 / 수강생 후기</p>
             <p className="review-label">수강생의 후기를 직접 확인해 보세요.</p>
           </div>
           <p className="reviews-note">실제 수업 후 남겨주신 후기 캡처입니다.</p>
