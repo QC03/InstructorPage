@@ -34,7 +34,7 @@ img { display: block; max-width: 100%; }
 .hero { position: relative; min-height: min(800px, 90vh); background-size: cover; background-position: center; color: white; }
 .hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(6, 22, 35, .66), rgba(6, 22, 35, .08) 72%), linear-gradient(0deg, rgba(6, 22, 35, .3), transparent 40%); }
 .hero-content { position: relative; z-index: 1; padding-top: 245px; }
-.eyebrow { margin: 0 0 20px; color: var(--sky); font: 600 14px/1.5 'Noto Sans KR', 'Space Grotesk', sans-serif; letter-spacing: 0; }
+.eyebrow { margin: 0 0 20px; color: var(--sky); font: 600 20px/1.5 'Noto Sans KR', 'Space Grotesk', sans-serif; letter-spacing: 0; }
 .eyebrow.light { color: #b9d9eb; }
 h1, h2, h3, p { margin-top: 0; }
 h1, h2 { font-weight: 500; letter-spacing: -.02em; }

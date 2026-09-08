@@ -6,13 +6,13 @@ export type PriceItem = {
 }
 
 export const siteContent = {
-  brand: '브랜드명 입력 예정',
-  instructor: '강사명 입력 예정',
-  role: '스키 · 스노보드 인스트럭터',
-  location: '운영 지역 입력 예정',
-  season: '운영 시즌 입력 예정',
+  brand: 'SNOVELIA',
+  instructor: '주성준',
+  role: '스키 · 스노보드 강사',
+  location: '하이원, 모나용평, 알펜시아 스키장',
+  season: '26-27 시즌',
   kakaoUrl: '',
-  email: '',
+  email: 'qc0306@naver.com',
   heroImage: '/images/lesson-hero.jpg',
   lessonImages: [
     { src: '/images/lesson-01.jpg', alt: '설원에서 스키 자세를 코칭하는 장면' },

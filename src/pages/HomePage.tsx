@@ -21,7 +21,7 @@ export function HomePage() {
       <div className="discipline-links"><Link to="/career"><span>01</span><strong>SKI</strong><small>정확한 엣지와 리듬</small><MoveRight /></Link><Link to="/career"><span>02</span><strong>SNOWBOARD</strong><small>자유로운 턴과 밸런스</small><MoveRight /></Link></div>
     </section>
     <section className="dark-band">
-      <div className="page-width split-heading"><SectionIntro eyebrow="02 / 설원에서" title="수업은 사진보다<br />더 많은 것을 남깁니다." /><Link className="text-link light-link" to="/career">강습 기록 보기 <ArrowUpRight size={16} /></Link></div>
+      <div className="page-width split-heading"><SectionIntro eyebrow="02 / 설원에서" title={<>수업은 사진보다<br />더 많은 것을 남깁니다.</>} /><Link className="text-link light-link" to="/career">강습 기록 보기 <ArrowUpRight size={16} /></Link></div>
       <Gallery items={siteContent.lessonImages} className="page-width" />
     </section>
     <section className="cta-band page-width"><div><p className="eyebrow">준비되셨다면</p><h2>이번 겨울,<br /><em>눈 위에서 만나요.</em></h2></div><Link className="button button-signal" to="/contact">레슨 문의하기 <ArrowUpRight size={17} /></Link></section>
