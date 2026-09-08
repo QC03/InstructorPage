@@ -11,7 +11,7 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 img { display: block; max-width: 100%; }
 .site-shell { min-height: 100vh; overflow: hidden; }
-.page-width { width: min(1180px, calc(100% - 80px)); margin-inline: auto; }
+.page-width { width: min(1380px, calc(100% - 80px)); margin-inline: auto; }
 .site-header { position: fixed; z-index: 20; inset: 0 0 auto; width: 100%; padding: 0 max(40px, calc((100% - 1280px) / 2)); display: flex; align-items: center; justify-content: space-between; height: 92px; transition: background-color .25s ease, color .25s ease, box-shadow .25s ease; }
 .header-light { color: white; }.header-dark { color: var(--ink); }
 .site-header.is-scrolled { background: rgba(238,243,246,.96); box-shadow: 0 5px 22px rgba(16,38,61,.1); }
@@ -174,3 +174,72 @@ em { color: var(--signal); font-style: normal; }
 }
 
 #intermediate-lesson { scroll-margin-top: 120px; }
+
+html:has(.home-page) {
+	scroll-snap-type: y mandatory;
+	scroll-padding-top: 92px;
+}
+
+.home-page > section {
+	scroll-snap-align: start;
+	scroll-snap-stop: normal;
+}
+
+.home-page .home-hero {
+	min-height: calc(100svh - 0px);
+}
+
+.home-page .operating-summary {
+	min-height: 28vh;
+	align-content: center;
+}
+
+.home-page .lesson-types-section,
+.home-page .home-price-section {
+	min-height: 82vh;
+	align-content: center;
+}
+
+.home-page .home-contact-strip {
+	min-height: 30vh;
+}
+
+@media (max-width: 760px) {
+	html:has(.home-page) {
+		scroll-snap-type: y proximity;
+		scroll-padding-top: 75px;
+	}
+
+	.home-page .home-hero {
+		min-height: calc(100svh - 0px);
+	}
+
+	.home-page .operating-summary,
+	.home-page .lesson-types-section,
+	.home-page .home-price-section,
+	.home-page .home-contact-strip {
+		min-height: auto;
+	}
+}
+
+.home-hero { position: relative; min-height: 650px; background-position: center; background-size: cover; color: white; }
+.home-hero-inner { position: relative; z-index: 1; display: flex; justify-content: flex-end; min-height: 650px; align-items: center; }
+.home-hero-info { width: min(600px, 100%); padding: 140px 0 44px 80px; }
+.home-hero-kicker { margin: 0 0 18px; color: #c9dce8; font-size: 15px; font-weight: 600; }
+.home-hero-info h1 { max-width: 540px; margin: 0 0 20px; font-size: clamp(2.5rem, 5vw, 4.8rem); line-height: 1.2; letter-spacing: -.04em; }
+.home-hero-description { max-width: 410px; margin: 0 0 30px; color: #e2edf2; font-size: 17px; line-height: 1.75; }
+.home-hero-facts { display: grid; gap: 12px; padding: 20px 0; border-top: 1px solid rgba(255,255,255,.3); border-bottom: 1px solid rgba(255,255,255,.3); }
+.home-hero-facts div { display: flex; justify-content: space-between; gap: 20px; font-size: 15px; }
+.home-hero-facts span { color: #b9d9eb; }.home-hero-facts strong { text-align: right; font-weight: 500; }
+.home-hero-actions { display: flex; align-items: center; gap: 22px; margin-top: 28px; }.home-secondary-link { color: white; font-size: 15px; font-weight: 600; }.home-secondary-link:hover { color: #b9d9eb; }
+.operating-summary { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }.operating-summary div { display: grid; gap: 8px; padding: 28px 24px; border-left: 1px solid var(--line); }.operating-summary div:first-child { border-left: 0; padding-left: 0; }.operating-summary span { color: var(--muted); font-size: 14px; }.operating-summary strong { font-size: 17px; font-weight: 600; }
+.home-section { padding-block: 100px; }.home-section-heading { display: flex; justify-content: space-between; align-items: end; gap: 60px; margin-bottom: 40px; }.home-section-heading h2 { margin: 0; font-size: clamp(2.2rem, 4vw, 4rem); line-height: 1.15; }.home-section-heading h2 span { color: var(--sky); }.home-section-heading > p { max-width: 350px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.75; }
+.lesson-type-list { border-top: 1px solid var(--line); }.lesson-type-row { display: grid; grid-template-columns: 55px 1fr 1.25fr auto; align-items: center; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--line); transition: color .2s ease, padding .2s ease; }.lesson-type-row:hover { padding-left: 10px; color: var(--sky); }.lesson-type-row > span { color: var(--signal); font: 600 14px 'Space Grotesk', sans-serif; }.lesson-type-row strong { font-size: 21px; font-weight: 600; }.lesson-type-row small { color: var(--muted); font-size: 15px; }.lesson-type-row svg { color: var(--sky); }
+.home-photo-section { padding-block: 100px; background: var(--ink); color: white; }.home-photo-heading { margin-bottom: 40px; }.home-photo-heading > p { color: #c9dce8; }.home-photo-heading h2 span { color: #f05a43; }.home-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }.home-photo-grid figure { margin: 0; }.home-photo-grid img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }.home-photo-grid figcaption { padding-top: 12px; color: #c9dce8; font-size: 14px; }
+.home-price-section { padding-bottom: 120px; }.home-price-layout { display: grid; grid-template-columns: 1.4fr .6fr; gap: 60px; align-items: start; }.home-price-table { width: 100%; border-collapse: collapse; text-align: left; }.home-price-table th, .home-price-table td { padding: 18px 16px; border-bottom: 1px solid var(--line); }.home-price-table th { font-weight: 600; }.home-price-table thead th { color: var(--muted); font-size: 14px; }.home-price-table tbody th { color: var(--sky); }.home-price-table td { font-weight: 600; }.home-price-included { padding: 28px; background: var(--ice); }.home-price-included > p:not(.eyebrow) { display: flex; align-items: center; gap: 9px; margin: 14px 0; font-size: 15px; }.home-price-included svg { color: var(--sky); }.home-price-included .button { margin-top: 15px; }
+.home-contact-strip { display: flex; align-items: center; justify-content: space-between; gap: 50px; padding-block: 88px; border-top: 1px solid var(--line); }.home-contact-strip > div { max-width: 700px; }.home-contact-strip h2 { margin: 0 0 18px; font-size: clamp(2rem, 4vw, 3.8rem); line-height: 1.2; }.home-contact-strip h2 span { color: var(--sky); }.home-contact-strip p:last-child { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.75; }
+@media (max-width: 760px) {
+	.home-hero { min-height: 700px; }.home-hero-inner { width: calc(100% - 24px); min-height: 700px; align-items: end; }.home-hero-info { width: 100%; padding: 28px 0 40px; }.home-hero-info h1 { max-width: 100%; font-size: clamp(2.25rem, 8vw, 3rem); line-height: 1.18; letter-spacing: -.03em; }.home-hero-description { max-width: 100%; font-size: 15px; line-height: 1.65; }.home-hero-facts div { display: grid; gap: 2px; }.home-hero-facts strong { text-align: left; }.home-hero-actions { align-items: flex-start; flex-direction: column; gap: 18px; }.home-hero-actions .button { width: 100%; justify-content: center; }
+	.operating-summary { grid-template-columns: repeat(2, 1fr); }.operating-summary div, .operating-summary div:first-child { padding: 22px 14px; border-left: 1px solid var(--line); }.operating-summary div:nth-child(odd) { border-left: 0; }.operating-summary div:nth-child(n+3) { border-top: 1px solid var(--line); }.operating-summary strong { font-size: 15px; }
+	.home-section { padding-block: 72px; }.home-section-heading { display: block; margin-bottom: 30px; }.home-section-heading > p { margin-top: 20px; }.lesson-type-row { grid-template-columns: 35px 1fr auto; gap: 12px; padding: 20px 0; }.lesson-type-row strong { font-size: 17px; }.lesson-type-row small { grid-column: 2; font-size: 14px; }.lesson-type-row svg { grid-column: 3; grid-row: 1 / span 2; }.home-price-layout { grid-template-columns: 1fr; gap: 35px; }.home-price-table th, .home-price-table td { padding: 15px 8px; font-size: 14px; }.home-contact-strip { align-items: flex-start; flex-direction: column; padding-block: 60px; }.home-contact-strip .button { width: 100%; justify-content: center; }
+}
