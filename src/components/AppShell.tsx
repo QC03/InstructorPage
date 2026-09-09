@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { siteContent } from '../content/site'
 
 const links = [
@@ -13,11 +13,29 @@ const links = [
 export function AppShell({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [activeNav, setActiveNav] = useState(() => getActiveNav(window.location.pathname, window.location.hash))
   const triggerRef = useRef<HTMLButtonElement>(null)
   const menuRef = useRef<HTMLElement>(null)
   const location = useLocation()
 
   useEffect(() => setMenuOpen(false), [location.pathname])
+
+  useEffect(() => {
+    setActiveNav(getActiveNav(location.pathname, location.hash))
+
+    if (location.pathname !== '/contact') return
+
+    const reviews = document.getElementById('reviews')
+    if (!reviews) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setActiveNav(entry.isIntersecting ? 'reviews' : 'contact'),
+      { rootMargin: '-35% 0px -45% 0px' },
+    )
+
+    observer.observe(reviews)
+    return () => observer.disconnect()
+  }, [location.pathname, location.hash])
 
   useEffect(() => {
     const targetId = decodeURIComponent(location.hash.replace(/^#/, ''))
@@ -79,7 +97,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <span>{siteContent.brand}</span>
           </Link>
           <aside className="desktop-menu" aria-label="주 메뉴">
-            {links.map((link) => <NavItem key={link.to} {...link} />)}
+            {links.map((link) => <NavItem key={link.to} {...link} active={activeNav === getNavKey(link.to)} />)}
             {siteContent.kakaoUrl ? <a className="nav-link side-contact" href={siteContent.kakaoUrl} target="_blank" rel="noreferrer">카카오톡으로 문의 <ArrowUpRight size={16} /></a> : <span className="nav-link side-contact is-disabled">카카오톡 링크 준비 중</span>}
           </aside>
         </div>
@@ -91,7 +109,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       {menuOpen && <button className="menu-backdrop" type="button" aria-label="메뉴 닫기" onClick={() => { setMenuOpen(false); triggerRef.current?.focus() }} />}
       <aside ref={menuRef} id="mobile-menu" className={`mobile-menu ${menuOpen ? 'is-open' : ''}`} aria-hidden={!menuOpen}>
         <p className="eyebrow">산이 기다리고 있습니다</p>
-        {links.map((link) => <NavItem key={link.to} {...link} mobile />)}
+        {links.map((link) => <NavItem key={link.to} {...link} mobile active={activeNav === getNavKey(link.to)} />)}
         {siteContent.kakaoUrl ? <a className="nav-link mobile-nav-link side-contact" href={siteContent.kakaoUrl} target="_blank" rel="noreferrer">카카오톡으로 문의 <ArrowUpRight size={16} /></a> : <span className="nav-link mobile-nav-link side-contact is-disabled">카카오톡 링크 준비 중</span>}
       </aside>
       <main>{children}</main>
@@ -104,6 +122,15 @@ export function AppShell({ children }: { children: ReactNode }) {
   )
 }
 
-function NavItem({ to, label, mobile = false }: { to: string; label: string; mobile?: boolean }) {
-  return <NavLink className={`nav-link ${mobile ? 'mobile-nav-link' : ''}`} to={to} end={to === '/'}>{label}<span>↗</span></NavLink>
+function NavItem({ to, label, mobile = false, active }: { to: string; label: string; mobile?: boolean; active: boolean }) {
+  return <Link className={`nav-link ${mobile ? 'mobile-nav-link' : ''}`} to={to} aria-current={active ? 'page' : undefined}>{label}<span>↗</span></Link>
+}
+
+function getNavKey(to: string) {
+  return to.includes('#') ? 'reviews' : to === '/contact' ? 'contact' : to
+}
+
+function getActiveNav(pathname: string, hash: string) {
+  if (pathname === '/contact') return hash === '#reviews' ? 'reviews' : 'contact'
+  return pathname
 }
