@@ -1,4 +1,4 @@
-import { ArrowUpRight, Check } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Gallery } from '../components/Gallery'
@@ -15,7 +15,7 @@ const lessonTypes = {
     label: '스키',
     steps: [
       ['01', '기본자세', '스키의 기본 자세인 알파인 베이직 포지션을 배웁니다.'],
-      ['02', 'A자','A자 자세에서 방향을 바꾸며 턴의 감각을 만듭니다.'],
+      ['02', 'A자', 'A자 자세에서 방향을 바꾸며 턴의 감각을 만듭니다.'],
       ['03', 'S턴', '스키를 단계별로 모아 슬로프를 내려옵니다.'],
       ['04', '페러렐턴', '스키를 나란히 모아 자연스럽게 슬로프를 내려옵니다.'],
     ],
@@ -65,16 +65,35 @@ function HeroInformation() {
   return (
     <div className="home-hero-info">
       <p className="home-hero-kicker">26-27 시즌 개인 강습</p>
-      <h1>스키와 스노보드,<br /><em>원하는 강습</em> <br />지금 시작하세요.</h1>
+      <h1>
+        스키와 스노보드,
+        <br />
+        <em>원하는 강습</em>
+        <br />
+        지금 시작하세요.
+      </h1>
       <p className="home-hero-description">입문부터 중급 라이딩까지 현재 수준과 목표에 맞춰 안내합니다.</p>
       <div className="home-hero-facts">
-        <div><span>종목</span><strong>스키 · 스노보드</strong></div>
-        <div><span>운영 스키장</span><strong>하이원 · 모나용평 · 알펜시아</strong></div>
-        <div><span>수업 인원</span><strong>1:1 · 2:1</strong></div>
+        <div>
+          <span>종목</span>
+          <strong>스키 · 스노보드</strong>
+        </div>
+        <div>
+          <span>운영 스키장</span>
+          <strong>하이원 · 모나용평 · 알펜시아</strong>
+        </div>
+        <div>
+          <span>수업 인원</span>
+          <strong>1:1 · 2:1</strong>
+        </div>
       </div>
       <div className="home-hero-actions">
-        <Link className="button button-signal" to="/contact">강습 문의하기 <ArrowUpRight size={17} /></Link>
-        <Link className="home-secondary-link" to="/pricing">강습요금 확인하기 <ArrowUpRight size={16} /></Link>
+        <Link className="button button-signal" to="/contact">
+          강습 문의하기 <ArrowUpRight size={17} />
+        </Link>
+        <Link className="home-secondary-link" to="/pricing">
+          강습요금 확인하기 <ArrowUpRight size={16} />
+        </Link>
       </div>
     </div>
   )
@@ -157,9 +176,13 @@ function PriceSummary() {
 function ContactSection() {
   return (
     <section className="home-contact-strip page-width">
-      <div>
-        <p className="eyebrow">03 / 강습 문의</p>
-        <h2>고민은 미루고<br /><span>문의는 가볍게.</span></h2>
+        <div>
+          <p className="eyebrow">03 / 강습 문의</p>
+          <h2>
+            고민은 미루고
+            <br />
+            <span>문의는 가볍게.</span>
+          </h2>
         <p>가능한 일정과 맞춤 수업을 안내해 드립니다.</p>
       </div>
       <Link className="button button-signal" to="/contact">강습 문의하기 <ArrowUpRight size={17} /></Link>
@@ -205,9 +228,14 @@ export function HomePage() {
 
   return (
     <div className="home-page">
-      <section className="home-hero" style={{ backgroundImage: `url(${siteContent.heroImage})` }}>
+      <section
+        className="home-hero"
+        style={{ backgroundImage: `url(${siteContent.heroImage})` }}
+      >
         <div className="hero-shade" />
-        <div className="page-width home-hero-inner"><HeroInformation /></div>
+        <div className="page-width home-hero-inner">
+          <HeroInformation />
+        </div>
       </section>
       <LessonTypes />
       <PriceSummary />

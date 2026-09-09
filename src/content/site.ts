@@ -1,10 +1,3 @@
-export type PriceItem = {
-  category: string
-  title: string
-  detail: string
-  price: string
-}
-
 export const siteContent = {
   brand: 'SNOVELIA',
   instructor: '주성준',
@@ -26,7 +19,6 @@ export const siteContent = {
     src: `/images/review-${String(index + 1).padStart(2, '0')}.jpg`,
     alt: `수강생 후기 캡처 ${index + 1}`,
   })),
-  prices: [] as PriceItem[],
 } as const
 
 export const careerItems: readonly (readonly [string, string, string])[] = [

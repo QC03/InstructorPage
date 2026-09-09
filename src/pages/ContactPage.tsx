@@ -1,8 +1,6 @@
 import { ArrowUpRight, CalendarDays, MapPin } from 'lucide-react'
 import { ReviewStrip } from '../components/Gallery'
 import { siteContent } from '../content/site'
-import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
 
 const contactChecklist = [
   '희망 날짜와 스키장',

@@ -19,10 +19,26 @@ const lessonPrices = [
 function PriceTable() {
   return (
     <div className="price-table-wrap">
-      <p className="price-table-note"><strong>각 스키장 강습 자켓(패찰) 비용은 별도입니다.</strong></p>
+      <p className="price-table-note">
+        <strong>각 스키장 강습 자켓(패찰) 비용은 별도입니다.</strong>
+      </p>
       <table className="price-table">
-        <thead><tr><th scope="col">수업 시간</th><th scope="col">1:1</th><th scope="col">2:1</th></tr></thead>
-        <tbody>{lessonPrices.map((item) => <tr key={item.duration}><th scope="row">{item.duration}</th><td>{item.oneToOne}</td><td>{item.twoToOne}</td></tr>)}</tbody>
+        <thead>
+          <tr>
+            <th scope="col">수업 시간</th>
+            <th scope="col">1:1</th>
+            <th scope="col">2:1</th>
+          </tr>
+        </thead>
+        <tbody>
+          {lessonPrices.map((item) => (
+            <tr key={item.duration}>
+              <th scope="row">{item.duration}</th>
+              <td>{item.oneToOne}</td>
+              <td>{item.twoToOne}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
       <Link className="price-table-link" to="/contact">가격 문의하기 <ArrowUpRight size={17} /></Link>
     </div>

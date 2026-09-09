@@ -54,7 +54,7 @@ function InstructorProfiles() {
 function CareerTimeline() {
   return (
     <section className="timeline-section">
-      <SectionIntro eyebrow="04 / 경력" title={<h1>강습과 함께, <br /> 걸어온 길.</h1>}/>
+      <SectionIntro eyebrow="04 / 경력" title={<>강습과 함께, <br /> 걸어온 길.</>} />
       <div className="timeline">
         {careerItems.length ? (
           careerItems.map(([year, title, copy]) => (

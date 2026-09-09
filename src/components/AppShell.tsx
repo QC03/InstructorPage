@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import { siteContent } from '../content/site'
@@ -92,13 +92,21 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="site-shell">
       <header className={`site-header ${location.pathname === '/' && !isScrolled ? 'header-light' : 'header-dark'} ${isScrolled ? 'is-scrolled' : ''}`}>
         <div className="desktop-menu-wrap">
-          <Link className="brand" to="/" aria-label={`${siteContent.brand} 홈`}>
+          <Link className="brand" to="/" aria-label={`${siteContent.brand} 홈`} onClick={scrollToTopOnClick}>
             <span className="brand-mark">S</span>
             <span>{siteContent.brand}</span>
           </Link>
           <aside className="desktop-menu" aria-label="주 메뉴">
-            {links.map((link) => <NavItem key={link.to} {...link} active={activeNav === getNavKey(link.to)} />)}
-            {siteContent.kakaoUrl ? <a className="nav-link side-contact" href={siteContent.kakaoUrl} target="_blank" rel="noreferrer">카카오톡으로 문의 <ArrowUpRight size={16} /></a> : <span className="nav-link side-contact is-disabled">카카오톡 링크 준비 중</span>}
+            {links.map((link) => (
+              <NavItem key={link.to} {...link} active={activeNav === getNavKey(link.to)} />
+            ))}
+            {siteContent.kakaoUrl ? (
+              <a className="nav-link side-contact" href={siteContent.kakaoUrl} target="_blank" rel="noreferrer">
+                카카오톡으로 문의 <ArrowUpRight size={16} />
+              </a>
+            ) : (
+              <span className="nav-link side-contact is-disabled">카카오톡 링크 준비 중</span>
+            )}
           </aside>
         </div>
         <button ref={triggerRef} className="menu-trigger" type="button" aria-expanded={menuOpen} aria-controls="mobile-menu" onClick={() => setMenuOpen((open) => !open)}>
@@ -109,8 +117,16 @@ export function AppShell({ children }: { children: ReactNode }) {
       {menuOpen && <button className="menu-backdrop" type="button" aria-label="메뉴 닫기" onClick={() => { setMenuOpen(false); triggerRef.current?.focus() }} />}
       <aside ref={menuRef} id="mobile-menu" className={`mobile-menu ${menuOpen ? 'is-open' : ''}`} aria-hidden={!menuOpen}>
         <p className="eyebrow">산이 기다리고 있습니다</p>
-        {links.map((link) => <NavItem key={link.to} {...link} mobile active={activeNav === getNavKey(link.to)} />)}
-        {siteContent.kakaoUrl ? <a className="nav-link mobile-nav-link side-contact" href={siteContent.kakaoUrl} target="_blank" rel="noreferrer">카카오톡으로 문의 <ArrowUpRight size={16} /></a> : <span className="nav-link mobile-nav-link side-contact is-disabled">카카오톡 링크 준비 중</span>}
+        {links.map((link) => (
+          <NavItem key={link.to} {...link} mobile active={activeNav === getNavKey(link.to)} />
+        ))}
+        {siteContent.kakaoUrl ? (
+          <a className="nav-link mobile-nav-link side-contact" href={siteContent.kakaoUrl} target="_blank" rel="noreferrer">
+            카카오톡으로 문의 <ArrowUpRight size={16} />
+          </a>
+        ) : (
+          <span className="nav-link mobile-nav-link side-contact is-disabled">카카오톡 링크 준비 중</span>
+        )}
       </aside>
       <main>{children}</main>
       <footer className="site-footer">
@@ -123,7 +139,21 @@ export function AppShell({ children }: { children: ReactNode }) {
 }
 
 function NavItem({ to, label, mobile = false, active }: { to: string; label: string; mobile?: boolean; active: boolean }) {
-  return <Link className={`nav-link ${mobile ? 'mobile-nav-link' : ''}`} to={to} aria-current={active ? 'page' : undefined}>{label}<span>↗</span></Link>
+  return (
+    <Link className={`nav-link ${mobile ? 'mobile-nav-link' : ''}`} to={to} aria-current={active ? 'page' : undefined} onClick={scrollToTopOnClick}>
+      {label}
+      <span>↗</span>
+    </Link>
+  )
+}
+
+function scrollToTopOnClick(event: MouseEvent<HTMLAnchorElement>) {
+  const link = event.currentTarget.getAttribute('href') ?? ''
+  const isModifiedClick = event.metaKey || event.ctrlKey || event.shiftKey || event.altKey
+
+  if (isModifiedClick || link.includes('#')) return
+
+  window.scrollTo({ top: 0, behavior: 'auto' })
 }
 
 function getNavKey(to: string) {
