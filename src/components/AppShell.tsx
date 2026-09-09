@@ -7,6 +7,7 @@ const links = [
   { to: '/', label: '홈' },
   { to: '/pricing', label: '수업 안내' },
   { to: '/contact', label: '문의하기' },
+  { to: '/contact#reviews', label: '후기 보기' },
 ]
 
 export function AppShell({ children }: { children: ReactNode }) {

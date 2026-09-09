@@ -1,6 +1,8 @@
 import { ArrowUpRight, CalendarDays, MapPin } from 'lucide-react'
 import { ReviewStrip } from '../components/Gallery'
 import { siteContent } from '../content/site'
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 const contactChecklist = [
   '희망 날짜와 스키장',
@@ -75,7 +77,7 @@ export function ContactPage() {
   return (
     <div className="page-width interior-page contact-page">
       <section className="page-heading contact-heading">
-        <p className="eyebrow">06 / 문의하기</p>
+        <p className="eyebrow">문의하기</p>
         <h1>
           눈 위의 추억을
         </h1>
@@ -92,13 +94,13 @@ export function ContactPage() {
 
       <ContactChecklist />
 
-      <section className="reviews">
+      <section id="reviews" className="reviews">
         <div className="split-heading">
           <div>
-            <p className="eyebrow">07 / 수강생 후기</p>
+            <p className="eyebrow">수강생 후기</p>
             <p className="review-label">수강생의 후기를 직접 확인해 보세요.</p>
           </div>
-          <p className="reviews-note">실제 수업 후 남겨주신 후기 캡처입니다.</p>
+          <p className="reviews-note">실제 수업 후 남겨주신 후기입니다.</p>
         </div>
         <ReviewStrip items={siteContent.testimonials} />
       </section>

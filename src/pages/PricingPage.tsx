@@ -47,7 +47,7 @@ export function PricingPage() {
   return (
     <div className="page-width interior-page">
       <section className="page-heading compact-heading">
-        <p className="eyebrow">05 / 수업 안내</p>
+        <p className="eyebrow">수업 안내</p>
         <h1>
           당신에게 맞는
         </h1>
