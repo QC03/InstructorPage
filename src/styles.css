@@ -182,16 +182,6 @@ em { color: var(--signal); font-style: normal; }
 
 #intermediate-lesson { scroll-margin-top: 120px; }
 
-html:has(.home-page) {
-	scroll-snap-type: y mandatory;
-	scroll-padding-top: 92px;
-}
-
-.home-page > section {
-	scroll-snap-align: start;
-	scroll-snap-stop: normal;
-}
-
 .home-page .home-hero {
 	min-height: calc(100svh - 0px);
 }
@@ -212,11 +202,6 @@ html:has(.home-page) {
 }
 
 @media (max-width: 760px) {
-	html:has(.home-page) {
-		scroll-snap-type: y proximity;
-		scroll-padding-top: 75px;
-	}
-
 	.home-page .home-hero {
 		min-height: calc(100svh - 0px);
 	}

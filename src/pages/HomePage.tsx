@@ -1,5 +1,5 @@
 import { ArrowUpRight } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Gallery } from '../components/Gallery'
 import { careerItems, siteContent } from '../content/site'
@@ -30,36 +30,6 @@ const lessonTypes = {
     ],
   },
 } as const
-
-function useHomeWheelSnap() {
-  useEffect(() => {
-    if (window.matchMedia('(max-width: 760px)').matches) return
-
-    const homeSections = Array.from(document.querySelectorAll<HTMLElement>('.home-page > section'))
-    let isLocked = false
-
-    const handleWheel = (event: WheelEvent) => {
-      if (isLocked || Math.abs(event.deltaY) < 40) return
-
-      const currentIndex = homeSections.reduce((index, section, sectionIndex) => {
-        return section.offsetTop <= window.scrollY + 120 ? sectionIndex : index
-      }, 0)
-      const nextIndex = event.deltaY > 0
-        ? Math.min(currentIndex + 1, homeSections.length - 1)
-        : Math.max(currentIndex - 1, 0)
-
-      if (nextIndex === currentIndex) return
-
-      event.preventDefault()
-      isLocked = true
-      homeSections[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'start' })
-      window.setTimeout(() => { isLocked = false }, 900)
-    }
-
-    window.addEventListener('wheel', handleWheel, { passive: false })
-    return () => window.removeEventListener('wheel', handleWheel)
-  }, [])
-}
 
 function HeroInformation() {
   return (
@@ -224,8 +194,6 @@ function InstructorSection() {
 }
 
 export function HomePage() {
-  useHomeWheelSnap()
-
   return (
     <div className="home-page">
       <section
