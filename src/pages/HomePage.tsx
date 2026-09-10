@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { Gallery } from '../components/Gallery'
 import { careerItems, siteContent } from '../content/site'
 
+import Reviews from '../components/Reviews'
+
 const lessonPrices = [
   { duration: '2시간', oneToOne: '100,000원', twoToOne: '150,000원' },
   { duration: '3시간', oneToOne: '150,000원', twoToOne: '200,000원' },
@@ -209,6 +211,7 @@ export function HomePage() {
       <PriceSummary />
       <ContactSection />
       <InstructorSection />
+      <Reviews />
     </div>
   )
 }
