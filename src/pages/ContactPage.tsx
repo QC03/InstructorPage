@@ -1,5 +1,4 @@
-import { ArrowUpRight, CalendarDays, MapPin } from 'lucide-react'
-import { ReviewStrip } from '../components/Gallery'
+import { ArrowUpRight, CalendarDays, Italic, MapPin } from 'lucide-react'
 import { siteContent } from '../content/site'
 import Reviews from '../components/Reviews'
 
@@ -13,6 +12,23 @@ function ContactActions() {
   return (
     <div className="contact-actions">
       <p className="contact-kicker">가장 편한 방법으로 연락해 주세요</p>
+
+      {siteContent.phone ? (
+        <a className="email-link" href={`tel:${siteContent.phone}`}>
+          {siteContent.phone}　<i> 추천‼️ </i>
+        </a>
+      ) : (
+        <span className="email-link is-disabled">전화번호 입력 예정</span>
+      )}
+      
+      {siteContent.email ? (
+        <a className="email-link" href={`mailto:${siteContent.email}`}>
+          {siteContent.email}
+        </a>
+      ) : (
+        <span className="email-link is-disabled">이메일 주소 입력 예정</span>
+      )}
+
       {siteContent.kakaoUrl ? (
         <a className="kakao-button" href={siteContent.kakaoUrl} target="_blank" rel="noreferrer">
           카카오톡으로 문의하기
@@ -20,13 +36,6 @@ function ContactActions() {
         </a>
       ) : (
         <span className="kakao-button is-disabled">카카오톡 링크 입력 예정</span>
-      )}
-      {siteContent.email ? (
-        <a className="email-link" href={`mailto:${siteContent.email}`}>
-          {siteContent.email}
-        </a>
-      ) : (
-        <span className="email-link is-disabled">이메일 주소 입력 예정</span>
       )}
     </div>
   )

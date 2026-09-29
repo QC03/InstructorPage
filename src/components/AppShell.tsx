@@ -131,7 +131,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <main>{children}</main>
       <footer className="site-footer">
         <span>{siteContent.brand} / {siteContent.season}</span>
-        {siteContent.email ? <a href={`mailto:${siteContent.email}`}>{siteContent.email}</a> : <span>연락처 입력 예정</span>}
+        {siteContent.phone ? <a href={`mailto:${siteContent.phone}`}>{siteContent.phone}</a> : <span>연락처 입력 예정</span>}
         <span>{siteContent.location}</span>
       </footer>
     </div>

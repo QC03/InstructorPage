@@ -5,6 +5,7 @@ export const siteContent = {
   location: '하이원, 모나용평, 알펜시아 스키장',
   season: '26-27 시즌',
   kakaoUrl: 'http://pf.kakao.com/_nPxgJX/chat',
+  phone: '010-5063-3490',
   email: 'qc0306@naver.com',
   heroImage: '/images/lesson-hero.jpg',
   lessonImages: [
