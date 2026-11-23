@@ -11,9 +11,9 @@ const includedItems = [
 ]
 
 const lessonPrices = [
-  { duration: '2시간', oneToOne: '100,000원', twoToOne: '150,000원' },
-  { duration: '3시간', oneToOne: '150,000원', twoToOne: '200,000원' },
-  { duration: '4시간', oneToOne: '200,000원', twoToOne: '250,000원' },
+  { duration: '2시간', oneToOne: '200,000원', twoToOne: '250,000원' },
+  { duration: '3시간', oneToOne: '250,000원', twoToOne: '300,000원' },
+  { duration: '4시간', oneToOne: '300,000원', twoToOne: '350,000원' },
 ] as const
 
 function PriceTable() {
